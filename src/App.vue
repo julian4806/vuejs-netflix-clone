@@ -1,26 +1,26 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template lang="">
+  <div id="app">
+    <search-bar></search-bar>
+    <movie-view></movie-view>
+    <side-bar></side-bar>
+  </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MovieView from "./components/MovieView.vue";
+import SideBar from "./components/SideBar.vue";
+import SearchBar from "./components/SearchBar.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    MovieView,
+    SideBar,
+    SearchBar,
+  },
+  myObject: {
+    title: "How to do lists in Vue",
+    author: "Jane Doe",
+    publishedAt: "2016-04-10",
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
