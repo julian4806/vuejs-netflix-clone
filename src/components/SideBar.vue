@@ -1,8 +1,5 @@
 <template>
-  <div class="font-bold bg-slate-300">sawerwwwsssdfont-bold</div>
+  <div class="font-bold bg-slate-300">SEARCHBAR</div>
 </template>
 
-<script>
-import data from "/src/movieData.js";
-console.log(data);
-</script>
+<script></script>
