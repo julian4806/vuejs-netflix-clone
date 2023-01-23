@@ -11,6 +11,13 @@
         <router-link to="trending">Trending</router-link>
         <router-link to="hot">Hot</router-link>
         <router-link to="new">New Releases</router-link>
+        <router-link to="genre">
+          <select>
+            <template v-for="(genre, index) in genres" :key="genre">
+              <option :value="genre.id">{{ genre.name }}</option>
+            </template>
+          </select>
+        </router-link>
       </nav>
       <nav class="sub-nav flex gap-2">
         <a href="#"><font-awesome-icon icon="fa-solid fa-search" /></a>
@@ -22,7 +29,26 @@
   <router-view />
 </template>
 
-<script></script>
+<script>
+import axios from "axios";
+export default {
+  name: "App",
+  data() {
+    return {
+      genres: null, //array
+    };
+  },
+  mounted() {
+    axios
+      .get(
+        "https://api.themoviedb.org/3/genre/movie/list?api_key=7f9a708abb557bfdd4dca953e9e755b4&language=en-US"
+      )
+      .then((response) => {
+        this.genres = response.data.genres;
+      });
+  },
+};
+</script>
 
 <style lang="scss">
 $primary: #141414;
