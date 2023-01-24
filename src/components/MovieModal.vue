@@ -1,37 +1,31 @@
 <template>
-  <div
-    id="myModal"
-    class="modal-overlay"
-    v-if="showModal"
-    @click="showModalToggle"
-  >
-    <div class="modal">
+  <div id="myModal" class="modal-overlay" v-if="showModal">
+    <div class="modal rounded-md">
       <div class="modal-content">
-        <p>{{ msg }}</p>
+        <button
+          @click="showModalToggle"
+          class="p-2 bg-blue-300 rounded-md absolute right-0"
+        >
+          close
+        </button>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
+  methods: {
+    showModalToggle() {
+      this.showModal = !this.showModal;
+    },
   },
   data() {
     return {
       showModal: true,
     };
   },
-  methods: {
-    showModalToggle() {
-      this.showModal = !this.showModal;
-    },
-  },
 };
 </script>
-
 <style lang="scss">
 .modal-overlay {
   display: block; /* Hidden by default */
@@ -62,7 +56,5 @@ export default {
       position: relative;
     }
   }
-
-  /* The Close Button */
 }
 </style>

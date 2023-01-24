@@ -8,9 +8,12 @@
           class="relative cursor-pointer hover:scale-125 hover:z-20 transition-transform"
         >
           <img
-            :data-index="index"
             :src="`https://image.tmdb.org/t/p/w500` + movie.backdrop_path"
-            class="rounded-sm"
+            class="rounded-md"
+            @click="
+              showModalToggle();
+              fillModalWithMovieContents(index);
+            "
           />
           <div
             class="absolute bottom-0 p-1 pointer-events-none w-full banner-gradient"
@@ -21,7 +24,7 @@
         </div>
       </template>
     </div>
-    <MovieModal />
+    <MovieModal v-if="showModal" />
   </div>
 </template>
 
@@ -34,9 +37,19 @@ export default {
   components: {
     MovieModal,
   },
+  methods: {
+    showModalToggle() {
+      this.showModal = !this.showModal;
+    },
+    fillModalWithMovieContents(id) {
+      // fills the modal wit stuff
+      console.log(id)
+    },
+  },
   data() {
     return {
       movies: null,
+      showModal: false,
     };
   },
   mounted() {

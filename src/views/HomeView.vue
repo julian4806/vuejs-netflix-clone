@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      thisShouldPass: [true, false],
+      thisShouldPass: "[true, false]",
     };
   },
 };
