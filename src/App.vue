@@ -45,6 +45,7 @@ export default {
       )
       .then((response) => {
         this.genres = response.data.genres;
+        // https://stackoverflow.com/questions/9907419/how-to-get-a-key-in-a-javascript-object-by-its-value
       });
   },
 };

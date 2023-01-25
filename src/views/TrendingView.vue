@@ -5,14 +5,14 @@
     >
       <template v-for="(movie, index) in movies" :key="index">
         <div
-          class="relative cursor-pointer hover:scale-125 hover:z-20 transition-transform"
+          class="relative cursor-pointer hover:scale-125 hover:z-10 transition-transform"
         >
           <img
             :src="`https://image.tmdb.org/t/p/w500` + movie.backdrop_path"
             class="rounded-md"
             @click="
-              showModalToggle();
-              fillModalWithMovieContents(index);
+              toggler();
+              fillModalWithMovieContents(movie);
             "
           />
           <div
@@ -24,7 +24,11 @@
         </div>
       </template>
     </div>
-    <MovieModal v-if="showModal" />
+    <MovieModal
+      :toggle="toggle"
+      :movieData="movieData"
+      @customChange="toggler"
+    />
   </div>
 </template>
 
@@ -38,18 +42,19 @@ export default {
     MovieModal,
   },
   methods: {
-    showModalToggle() {
-      this.showModal = !this.showModal;
+    fillModalWithMovieContents(movie) {
+      this.movieData = movie;
     },
-    fillModalWithMovieContents(id) {
-      // fills the modal wit stuff
-      console.log(id)
+    toggler() {
+      this.toggle = !this.toggle;
     },
   },
   data() {
     return {
       movies: null,
+      movieData: null,
       showModal: false,
+      toggle: false,
     };
   },
   mounted() {
