@@ -24,11 +24,7 @@
         </div>
       </template>
     </div>
-    <MovieModal
-      :toggle="toggle"
-      :movieData="movieData"
-      @customChange="toggler"
-    />
+    <MovieModal :toggle="toggle" :movieId="movieId" @customChange="toggler" />
   </div>
 </template>
 
@@ -43,7 +39,7 @@ export default {
   },
   methods: {
     fillModalWithMovieContents(movie) {
-      this.movieData = movie;
+      this.movieId = movie.id;
     },
     toggler() {
       this.toggle = !this.toggle;
@@ -52,7 +48,7 @@ export default {
   data() {
     return {
       movies: null,
-      movieData: null,
+      movieId: null,
       showModal: false,
       toggle: false,
     };

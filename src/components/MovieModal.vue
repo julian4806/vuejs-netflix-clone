@@ -8,27 +8,26 @@
         >
           close
         </button>
-        <div @change="movieData">
-          {{ movieData.name ? movieData.name : movieData.title }}
-          <br /><br />
-          <div v-for="(id, index) in movieData.genre_ids" :key="index">
-            {{ id }}
-          </div>
-          <br />
-          {{ movieData.overview }}
+
+        <div @change="toggle">
+          {{ getMovieInfoById() }}
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   props: {
     toggle: Boolean,
-    movieData: Object,
+    movieId: Number,
   },
   data() {
-    return {};
+    return {
+      movieInfo: null,
+    };
   },
   methods: {
     sendChange() {
@@ -38,11 +37,17 @@ export default {
       console.log(this.$emit("sendMovieDataToModal"));
     },
     fetchMovieData(movie) {
-      /*
-      <h4 v-if="movie.name">{{ movie.name }}</h4>
-      <h4 v-else>{{ movie.title }}</h4>
-      */
       movie.name ? movie.name : movie.title;
+    },
+    getMovieInfoById() {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${this.movieId}?api_key=7f9a708abb557bfdd4dca953e9e755b4`
+        )
+        .then((response) => {
+          this.movieInfo = response.data;
+          console.log(this.movieInfo);
+        });
     },
   },
 };
