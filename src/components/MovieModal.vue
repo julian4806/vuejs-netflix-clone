@@ -3,14 +3,38 @@
     <div class="modal rounded-md">
       <div class="modal-content">
         <button
-          class="p-2 bg-blue-300 rounded-md absolute right-0"
+          class="p-2 bg-black text-white rounded-md absolute right-0"
           @click="sendChange"
         >
           close
         </button>
-
-        <div @change="toggle">
-          {{ getMovieInfoById() }}
+        <div class="flex flex-col h-full gap-4">
+          <div class="flex gap-4">
+            <img
+              class="h-[200px] rounded-md"
+              :src="
+                'https://www.themoviedb.org/t/p/w500' + movieInfo.poster_path
+              "
+            />
+            <div class="w-[50%]">
+              <div>
+                <div class="text-3xl">
+                  {{ movieInfo.name }}
+                </div>
+                <div class="mt-2">
+                  {{ `Rating: ${movieInfo.vote_average}` }}
+                </div>
+                <div class="mt-2">
+                  <template v-for="(genre, index) in movieInfo.genres">
+                    <span v-if="index === 0">Genre: </span>
+                    <span>{{ genre.name }}</span>
+                    <span v-if="index + 1 < movieInfo.genres.length">, </span>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="">{{ movieInfo.overview }}</div>
         </div>
       </div>
     </div>
@@ -26,23 +50,23 @@ export default {
   },
   data() {
     return {
-      movieInfo: null,
+      movieInfo: Object,
     };
   },
   methods: {
     sendChange() {
       this.$emit("customChange");
     },
-    movieContents() {
-      console.log(this.$emit("sendMovieDataToModal"));
-    },
     fetchMovieData(movie) {
       movie.name ? movie.name : movie.title;
     },
-    getMovieInfoById() {
+  },
+  watch: {
+    movieId() {
+      // tv or movie
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/${this.movieId}?api_key=7f9a708abb557bfdd4dca953e9e755b4`
+          `https://api.themoviedb.org/3/tv/${this.movieId}?api_key=7f9a708abb557bfdd4dca953e9e755b4`
         )
         .then((response) => {
           this.movieInfo = response.data;
@@ -78,7 +102,7 @@ export default {
 
     .modal-content {
       width: 100%;
-      height: 50vh;
+      height: auto;
       position: relative;
     }
   }

@@ -1,0 +1,99 @@
+{
+  "adult": false,
+  "backdrop_path": "/ainULFE0cttTLfQnBxaIMqQlxH7.jpg",
+  "created_by": [
+    {
+      "id": 3831022,
+      "credit_id": "639a2feefb3f6100ca58bf4e",
+      "name": "Emma Moran",
+      "gender": 0,
+      "profile_path": null
+    }
+  ],
+  "episode_run_time": [],
+  "first_air_date": "2023-01-25",
+  "genres": [
+    {
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 10759,
+      "name": "Action & Adventure"
+    }
+  ],
+  "homepage": "https://www.disneyplus.com/series/extraordinary/4DSm6FtU8EvQ",
+  "id": 47907,
+  "in_production": true,
+  "languages": ["en"],
+  "last_air_date": "2023-01-25",
+  "last_episode_to_air": {
+    "air_date": "2023-01-25",
+    "episode_number": 8,
+    "id": 4104902,
+    "name": "Surprise!",
+    "overview": "Jen’s romantic options collide, while Kash and Carrie have different goals at a ‘surprise’ party.",
+    "production_code": "",
+    "runtime": 27,
+    "season_number": 1,
+    "show_id": 47907,
+    "still_path": "/mOWTzUGaB3JGNUGXfzMMh21B7b.jpg",
+    "vote_average": 0,
+    "vote_count": 0
+  },
+  "name": "Extraordinary",
+  "next_episode_to_air": null,
+  "networks": [
+    {
+      "id": 2739,
+      "name": "Disney+",
+      "logo_path": "/gJ8VX6JSu3ciXHuC2dDGAo2lvwM.png",
+      "origin_country": ""
+    }
+  ],
+  "number_of_episodes": 8,
+  "number_of_seasons": 1,
+  "origin_country": ["GB"],
+  "original_language": "en",
+  "original_name": "Extraordinary",
+  "overview": "In a world where everyone develops a power on their 18th birthday, Jen didn't. She's turning 25 and is still waiting to get hers. Adrift in a big, confusing world and armed with nothing but a bit of hope and a lot of desperation, Jen begins her journey to find her maybe-superpower. But in doing so, she might discover the joy of being just kind of ok.",
+  "popularity": 42.738,
+  "poster_path": "/onp2UrYrvkHphkrCq8wKFflmlKl.jpg",
+  "production_companies": [
+    {
+      "id": 75154,
+      "logo_path": "/p2cI2yJRxYJnrQ0AI33uHOKZShZ.png",
+      "name": "Sid Gentle Films",
+      "origin_country": "GB"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "GB",
+      "name": "United Kingdom"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2023-01-25",
+      "episode_count": 8,
+      "id": 244787,
+      "name": "Season 1",
+      "overview": "",
+      "poster_path": "/onp2UrYrvkHphkrCq8wKFflmlKl.jpg",
+      "season_number": 1
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "English",
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "What if everyone had a superpower except you?",
+  "type": "Scripted",
+  "vote_average": 7,
+  "vote_count": 6
+}
