@@ -30,7 +30,6 @@
       :type="type"
       @customChange="toggler"
     />
-    <show-type @changeShowType="changeShowType" />
     <paginate-bar />
   </div>
 </template>
@@ -55,15 +54,10 @@ export default {
     toggler() {
       this.toggle = !this.toggle;
     },
-    changeShowType(showType) {
-      this.type = showType;
-      this.fetchMovieDataFromAPI(this.type);
-    },
-    fetchMovieDataFromAPI(type) {
-      if (!type) type = "movie";
+    fetchMovieDataFromAPI() {
       axios
         .get(
-          `https://api.themoviedb.org/3/trending/${type}/day?api_key=7f9a708abb557bfdd4dca953e9e755b4&language=en-US&page=1`
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=7f9a708abb557bfdd4dca953e9e755b4&language=en-US&page=1`
         )
         .then((response) => {
           this.movies = response.data.results;

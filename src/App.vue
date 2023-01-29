@@ -7,20 +7,13 @@
     </div>
     <div class="w-[85%] flex justify-between">
       <nav class="main-nav flex gap-4">
-        <router-link to="/" @click="showTypeDropdown = false">Home</router-link>
-        <router-link to="trending" @click="showTypeDropdownFunc"
-          >Trending</router-link
-        >
+        <router-link to="/">Home</router-link>
+        <router-link to="trending">Trending</router-link>
+        <router-link to="top-rated">Top Rated</router-link>
+        <router-link to="upcoming">Upcoming</router-link>
       </nav>
       <nav class="sub-nav flex gap-2">
-        <div class="dropdown pr-8" v-if="showTypeDropdown">
-          <button class="dropbtn">Type</button>
-          <div class="dropdown-content">
-            <a>TV</a>
-            <a>Movie</a>
-          </div>
-        </div>
-        <a href="#"><font-awesome-icon icon="fa-solid fa-search" /></a>
+        <search-bar />
         <a href="#"><font-awesome-icon icon="fa-solid fa-bell" /></a>
         <a href="#">Account</a>
       </nav>
@@ -30,18 +23,12 @@
 </template>
 
 <script>
+import SearchBar from "@/components/SearchBar.vue";
+
 export default {
   name: "App",
-  data() {
-    return {
-      showTypeDropdown: false,
-    };
-  },
-  methods: {
-    showTypeDropdownFunc() {
-      this.showTypeDropdown = true;
-      console.log(this.showTypeDropdown);
-    },
+  components: {
+    SearchBar,
   },
 };
 </script>
@@ -54,7 +41,7 @@ $dark: #686868;
 html,
 body {
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0;
   padding: 0;
   background-color: $primary;
@@ -71,45 +58,5 @@ body {
     rgba(0, 0, 0, 1) 0%,
     rgba(255, 255, 255, 1) 658%
   );
-}
-
-// Dropdown
-.dropbtn {
-  background-color: rgb(65, 65, 65);
-  color: white;
-  font-size: 16px;
-  padding: 0 5px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropdown {
-  user-select: none;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  border-radius: 20px;
-  background-color: #f9f9f9;
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  cursor: pointer;
-  border-radius: 20px;
-}
-
-.dropdown-content a:hover {
-  background-color: #d8d8d8;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }
 </style>

@@ -18,8 +18,9 @@
           <div
             class="absolute bottom-0 p-1 pointer-events-none w-full banner-gradient"
           >
-            <h4 v-if="movie.name">{{ movie.name }}</h4>
-            <h4 v-else>{{ movie.title }}</h4>
+            <h4>
+              {{ movie.name ? movie.name : movie.title }}
+            </h4>
           </div>
         </div>
       </template>
@@ -63,7 +64,7 @@ export default {
       if (!type) type = "movie";
       axios
         .get(
-          `https://api.themoviedb.org/3/trending/${type}/day?api_key=7f9a708abb557bfdd4dca953e9e755b4&language=en-US&page=1`
+          `https://api.themoviedb.org/3/${type}/top_rated?api_key=7f9a708abb557bfdd4dca953e9e755b4&language=en-US&page=1`
         )
         .then((response) => {
           this.movies = response.data.results;

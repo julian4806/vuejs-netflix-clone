@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import TrendingView from "../views/TrendingView.vue";
+import TopView from "../views/TopView.vue";
+import UpcomingView from "../views/UpcomingView.vue";
 
 const routes = [
   {
@@ -9,10 +11,19 @@ const routes = [
     component: HomeView,
   },
   {
+    path: "/top-rated",
+    name: "top-rated",
+    component: TopView,
+  },
+  {
     path: "/trending",
     name: "trending",
     component: TrendingView,
-    props: true,
+  },
+  {
+    path: "/upcoming",
+    name: "upcoming",
+    component: UpcomingView,
   },
 ];
 

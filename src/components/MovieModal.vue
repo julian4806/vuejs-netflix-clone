@@ -19,10 +19,13 @@
             <div class="w-[50%]">
               <div>
                 <div class="text-3xl">
-                  {{ movieInfo.name }}
+                  {{ movieInfo.name ? movieInfo.name : movieInfo.title }}
                 </div>
                 <div class="mt-2">
                   {{ `Rating: ${movieInfo.vote_average}` }}
+                </div>
+                <div class="mt-2">
+                  {{ `Release: ${movieInfo.release_date}` }}
                 </div>
                 <div class="mt-2">
                   <template v-for="(genre, index) in movieInfo.genres">
@@ -47,6 +50,7 @@ export default {
   props: {
     toggle: Boolean,
     movieId: Number,
+    type: String,
   },
   data() {
     return {
@@ -66,7 +70,9 @@ export default {
       // tv or movie
       axios
         .get(
-          `https://api.themoviedb.org/3/tv/${this.movieId}?api_key=7f9a708abb557bfdd4dca953e9e755b4`
+          `https://api.themoviedb.org/3/${this.type.toLowerCase()}/${
+            this.movieId
+          }?api_key=7f9a708abb557bfdd4dca953e9e755b4`
         )
         .then((response) => {
           this.movieInfo = response.data;
@@ -78,17 +84,16 @@ export default {
 </script>
 <style lang="scss">
 .modal-overlay {
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 10; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: block;
+  position: fixed;
+  z-index: 100;
+  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
   color: black;
 
   /* Modal Content */
