@@ -31,7 +31,7 @@
       @customChange="toggler"
     />
     <show-type @changeShowType="changeShowType" />
-    <paginate-bar />
+    <paginate-bar @paginate="paginate" />
   </div>
 </template>
 
@@ -43,6 +43,16 @@ import PaginateBar from "@/components/PaginateBar.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      movies: null,
+      movieId: null,
+      type: "movie",
+      showModal: false,
+      page: 1,
+      toggle: false,
+    };
+  },
   components: {
     MovieModal,
     ShowType,
@@ -63,22 +73,19 @@ export default {
       if (!type) type = "movie";
       axios
         .get(
-          `https://api.themoviedb.org/3/trending/${type}/day?api_key=7f9a708abb557bfdd4dca953e9e755b4&language=en-US&page=1`
+          `https://api.themoviedb.org/3/trending/${type}/day?api_key=7f9a708abb557bfdd4dca953e9e755b4&language=en-US&page=${this.page}`
         )
         .then((response) => {
           this.movies = response.data.results;
         });
     },
+    paginate(page) {
+      // comes from the paginateBar component
+      this.page = page;
+      this.fetchMovieDataFromAPI();
+    },
   },
-  data() {
-    return {
-      movies: null,
-      movieId: null,
-      type: "movie",
-      showModal: false,
-      toggle: false,
-    };
-  },
+
   mounted() {
     this.fetchMovieDataFromAPI();
   },

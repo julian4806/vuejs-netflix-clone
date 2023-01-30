@@ -76,7 +76,6 @@ export default {
         )
         .then((response) => {
           this.movieInfo = response.data;
-          console.log(this.movieInfo);
         });
     },
   },

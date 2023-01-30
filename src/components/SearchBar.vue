@@ -41,7 +41,7 @@
         >
           <img
             v-if="movie.poster_path === null"
-            src="@/assets/No_Image_Available.jpg"
+            src="@/assets/no-poster-image.jpg"
             class="h-20 rounded-md"
           />
           <img
@@ -118,7 +118,6 @@ export default {
         .then((response) => {
           this.movies = response.data.results;
         });
-      console.log(this.movies);
       this.movieDropdownToggle = true;
     },
   },

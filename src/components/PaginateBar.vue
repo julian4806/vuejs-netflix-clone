@@ -1,16 +1,17 @@
 <template>
-  <div class="paginate flex gap-3">
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>4</button>
-    <button>5</button>
+  <div class="paginate">
+    <button v-for="i in 5" @click="paginate(i)">{{ i }}</button>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {},
+  props: {},
+  methods: {
+    paginate(index) {
+      this.$emit("paginate", index);
+    },
+  },
 };
 </script>
 
@@ -22,6 +23,7 @@ export default {
   background-color: rgb(103, 103, 103);
   border-radius: 5px;
   display: flex;
+  gap: 10px;
 
   button {
     background-color: rgb(56, 56, 56);
