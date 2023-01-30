@@ -46,7 +46,7 @@ export default {
   background-color: #f9f9f9;
   position: fixed;
   top: 35px;
-  right: 450px;
+  right: 470px;
   z-index: 1;
   border-radius: 5px;
   user-select: none;
